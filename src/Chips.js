@@ -1,15 +1,37 @@
-import React from "react";
+import React, {useState} from "react";
+import { Link } from "react-router-dom";
+import "./Chips.css";
+import Counter from "./Counter";
+
+function getRandom(min = 0, max = 100) {
+    return Math.random() * (max - min) + min;
+  }
 
 function Chips() {
+    const handleClick = e => {
+        
+    }
+    
+    const img = "https://m.media-amazon.com/images/I/61kqu+H+QaL._SL1122_.jpg"
+
+    const [chips, setChips] = useState([]
+        );
+
+    const addChips = () => {
+        setChips(chips => [...chips, {img, x: getRandom(), y: getRandom()}])
+    }
+
     return (
         <div>
-          <h1>BAGS EATEN: </h1>
-          <button>NOM NOM NOM</button>
-          <img
-            src="https://p7.hiclipart.com/preview/532/548/1013/barbecue-nachos-lays-potato-chip-frito-lay-original-chips-184-2g.jpg"
+          <Counter />
+          <Link to="/">GO BACK</Link>
+          <img className="ChipsImg"
+            src={img}
+            onClick={addChips}
           />
         </div>
       );
 }
 
 export default Chips;
+
